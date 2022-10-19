@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { TbFileUpload } from "react-icons/tb";
 
-import { Layout } from "../components";
+import { Layout, Warning } from "../components";
 import { MYUpload } from "../styles";
 
 const requestHeaders: HeadersInit = new Headers();
@@ -76,46 +76,34 @@ const Upload: React.FC = () => {
       <Col xs={12} style={{ maxWidth: "350px" }}>
         <Form onSubmit={onSubmit}>
           {upload ? (
-            <>
-              <MYUpload className="mb-3" controlId="formBasicEmail">
-                <Form.Label>
-                  <Col>
-                    <TbFileUpload />
-                    <span className="ml-2 text-break">
-                      <p>
-                        faça upload do seu arquivo <strong>.pdf</strong>{" "}
-                        clicando aqui
-                      </p>
-                    </span>
-                  </Col>
-                </Form.Label>
-                <Form.Control
-                  type="file"
-                  {...register("file", { required: true, pattern: /.pdf$/ })}
-                  placeholder="Insira seu email"
-                />
-                <Form.Text className="text-muted">
-                  {errors.file?.type === "required" && (
-                    <span style={{ color: "red" }}>
-                      Este campo é obrigatório!! <br />
-                    </span>
-                  )}
-
-                  <span>
-                    <strong>Ainda não tem o modelo do gabarito?</strong> sem
-                    problemas,
-                    <strong>
-                      <a download={true} href="#">
-                        clique aqui
-                      </a>
-                    </strong>
-                    para baixar o modelo, <strong>preencha</strong> e depois
-                    <strong>faça o upload </strong>
-                    do seu arquivo aqui mesmo.
+            <MYUpload className="mb-3" controlId="formBasicEmail">
+              <Form.Label>
+                <Col>
+                  <TbFileUpload />
+                  <span className="ml-2 text-break">
+                    <p>
+                      faça upload do seu arquivo <strong>.pdf</strong> clicando
+                      aqui
+                    </p>
                   </span>
-                </Form.Text>
-              </MYUpload>
-            </>
+                </Col>
+              </Form.Label>
+              <Form.Control
+                type="file"
+                {...register("file", { required: true, pattern: /.pdf$/ })}
+                placeholder="Insira seu email"
+              />
+              <Form.Text className="text-muted">
+                {errors.file?.type === "required" && (
+                  <span style={{ color: "red" }}>
+                    Este campo é obrigatório!! <br />
+                  </span>
+                )}
+                <>
+                  <Warning />
+                </>
+              </Form.Text>
+            </MYUpload>
           ) : (
             <>
               <Form.Group className="mb-3" controlId="formBasicEmail">

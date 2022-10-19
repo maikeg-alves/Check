@@ -7,6 +7,8 @@ import Accordion from "./prova.comonents/Accordion.component";
 import AprovadosReprovados from "./prova.comonents/aprovadosreprovados";
 import MyModal from "./prova.comonents/modal.component";
 import Loading from "./lading.component/loading.component";
+import Warning from "./warning/warning.component";
+
 export {
   Layout,
   Typewriter,
@@ -17,4 +19,5 @@ export {
   AprovadosReprovados,
   MyModal,
   Loading,
+  Warning,
 };
