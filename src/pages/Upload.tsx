@@ -7,6 +7,9 @@ import { TbFileUpload } from "react-icons/tb";
 import { Layout } from "../components";
 import { MYUpload } from "../styles";
 
+const requestHeaders: HeadersInit = new Headers();
+requestHeaders.set("Content-Type", "application/json");
+
 type FormData = {
   name: string;
   Email: string;
@@ -46,9 +49,6 @@ const Upload: React.FC = () => {
 
         await fetch(`${VITE_BASE_URL}/api/upload?year=${data.year}`, {
           method: "POST",
-          headers: {
-            Authorization: `Bearer ${VITE_API_KEY}`,
-          },
           body: formData,
         })
           .then((response) => response.json())

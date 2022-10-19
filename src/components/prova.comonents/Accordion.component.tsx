@@ -80,24 +80,34 @@ const Accordion: React.FC<AccordionProps> = ({ materias, year }) => {
                   <Card.Text>
                     {materia.erros.map((erro, id) => (
                       <Col xs={12} key={id}>
-                        <Alert
-                          key={"danger"}
-                          variant={"danger"}
-                          className="d-flex"
-                        >
-                          <Col>Questão: {erro.number}</Col>
-                          <Col>Letra: {erro.letter}</Col>
-
-                          <a
-                            target="_blank"
-                            href={`https://www.google.com.br/search?q=${materia.name.replace(
-                              /\s/g,
-                              "+"
-                            )}+quest%C3%A3o+${erro.number}+encceja+${year}`}
+                        {erro.letter === "X" ? (
+                          <Alert
+                            key={"danger"}
+                            variant={"danger"}
+                            className="d-flex"
                           >
-                            ver resposta
-                          </a>
-                        </Alert>
+                            <p>Prova não aplicada</p>
+                          </Alert>
+                        ) : (
+                          <Alert
+                            key={"danger"}
+                            variant={"danger"}
+                            className="d-flex"
+                          >
+                            <Col>Questão: {erro.number}</Col>
+                            <Col>Letra: {erro.letter}</Col>
+
+                            <a
+                              target="_blank"
+                              href={`https://www.google.com.br/search?q=${materia.name.replace(
+                                /\s/g,
+                                "+"
+                              )}+quest%C3%A3o+${erro.number}+encceja+${year}`}
+                            >
+                              ver resposta
+                            </a>
+                          </Alert>
+                        )}
                       </Col>
                     ))}
                   </Card.Text>
